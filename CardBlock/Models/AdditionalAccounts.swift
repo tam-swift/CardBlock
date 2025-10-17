@@ -14,9 +14,5 @@ struct AdditionAccount: Account, Identifiable {
     var iconName: String
 }
 
-protocol Account {
-    var id: UUID { get }
-    var name: String { get }
-    var count: Double { get }
-    var iconName: String { get }
-}
+let collecting = AdditionAccount(name: "Сбор на другое", count: 120000, iconName: "ellipsis.circle.fill")
+let creditAD = AdditionAccount(name: "На любые цели", count: 150000, iconName: "plus.circle.fill")

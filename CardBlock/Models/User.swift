@@ -9,6 +9,9 @@ import Foundation
 
 struct User: Identifiable {
     var id = UUID()
-    var card : Card?
-    var additionalAccounts: AdditionAccount?
+    var cards : [Card]?
+    var additionAccounts: [AdditionAccount]?
+    var waste: Int
 }
+
+let currentUser = User(cards: [currentCard], additionAccounts: [collecting, creditAD], waste: 371402)

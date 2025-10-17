@@ -14,3 +14,5 @@ struct Card : Account, Identifiable {
     var iconName: String
     var bonusCount: Double
 }
+
+let currentCard = Card(name: "Black", count: 150326.43, iconName: "rublesign.ring", bonusCount: 987)

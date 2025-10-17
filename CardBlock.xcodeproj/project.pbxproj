@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0DA644892EA230240004824C /* CardBlock */ = {
+		0DA644C92EA260F00004824C /* CardBlock */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = CardBlock;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 		0DA6447E2EA230240004824C = {
 			isa = PBXGroup;
 			children = (
-				0DA644892EA230240004824C /* CardBlock */,
+				0DA644C92EA260F00004824C /* CardBlock */,
 				0DA644882EA230240004824C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				0DA644892EA230240004824C /* CardBlock */,
+				0DA644C92EA260F00004824C /* CardBlock */,
 			);
 			name = CardBlock;
 			packageProductDependencies = (

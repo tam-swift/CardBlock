@@ -7,12 +7,27 @@
 
 import SwiftUI
 
-struct ActionsView: View {
+struct ActionView: View {
+    
+    let action: ActionModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            RoundedRectangle(cornerRadius: 20)
+                .frame(width: 85, height: 48)
+                .foregroundStyle(Color.gray.opacity(0.2))
+                .overlay {
+                    Image(systemName: action.iconName)
+                        .foregroundStyle(.blue)
+                }
+            Text(action.name)
+                .lineLimit(2)
+                .font(.caption)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: 85)
     }
 }
 
 #Preview {
-    ActionsView()
+    ActionView(action: actionModels[0])
 }

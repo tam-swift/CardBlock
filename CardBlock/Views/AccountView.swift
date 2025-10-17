@@ -1,5 +1,5 @@
 //
-//  CardView.swift
+//  Account.swift
 //  CardBlock
 //
 //  Created by Tamerlan Swift on 17.10.2025.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct AccountView: View {
+struct AccountView<AccountType:Account>: View {
     
     @Environment(\.colorScheme) var colorSheme
     
-    let userCard : Card
+    let userAccount: AccountType
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            Image(systemName: userCard.iconName)
+            Image(systemName: userAccount.iconName)
                 .resizable()
                 .frame(width: 40, height: 40)
                 .foregroundStyle(.blue)
@@ -27,35 +27,49 @@ struct AccountView: View {
                 )
                 .clipShape(Circle())
             VStack(alignment: .leading) {
-                Text(userCard.count.asCurrencyWith2Decimals())
-                    .bold()
-                Text("Black")
-                Image("card")
-                    .resizable()
-                    .frame(width: 48, height: 32)
-                    .clipShape(RoundedRectangle(cornerRadius: 7))
+                Text(userAccount.count.asCurrencyWith2Decimals())
+                    .fontWeight(.heavy)
+                Text(userAccount.name)
+                    .fontWeight(.regular)
+                if userAccount is Card {
+                    Image("card")
+                        .resizable()
+                        .frame(width: 48, height: 32)
+                        .clipShape(RoundedRectangle(cornerRadius: 7))
+                }
+                
             }
             Spacer()
-            HStack {
-                Image(systemName: "crown.fill")
-                Text(userCard.bonusCount.asCurrencyWith2Decimals() )
-                    .bold()
+            if userAccount is Card{
+                bonusView
             }
-            .padding(5)
-            .font(.caption2)
-            .foregroundStyle(.white)
-            .background(colorSheme == .dark ? .gray.opacity(0.4) :.black)
-            .clipShape(RoundedRectangle(cornerRadius: 15))
         }
         .padding(23)
         .background(Color("CardViewColor"))
         .clipShape(RoundedRectangle(cornerRadius: 25))
-        .shadow(radius: 10)
+        .shadow(color: .black.opacity(0.2), radius: 10)
+    }
+    
+    private var bonusView: some View {
+        HStack {
+            Image(systemName: "crown.fill")
+            Text((userAccount as? Card)? .bonusCount.asCurrencyWith2Decimals() ?? "0" )
+        }
+        .padding(5)
+        .font(.caption2)
+        .fontWeight(.heavy)
+        .foregroundStyle(.white)
+        .background(colorSheme == .dark ? .gray.opacity(0.4) :.black)
+        .clipShape(RoundedRectangle(cornerRadius: 15))
     }
 }
 
 #Preview {
-    AccountView(userCard: currentCard)
-        .padding()
+    Group {
+        AccountView(userAccount: currentCard)
+            .padding()
+        AccountView(userAccount: collecting)
+            .padding()
+    }
 }
 
